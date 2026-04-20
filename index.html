@@ -3,36 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>国际站标题专家 Pro v3.0 - AI 智能生产力工具</title>
+    <title>国际站标题专家 Pro v3.1 - AI 智能生产力工具</title>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #ff6a00; --secondary: #ee0979; }
-        body { 
-            font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif; 
-            background: radial-gradient(circle at top right, #1e293b, #0f172a);
-            color: #f1f5f9; margin: 0; overflow-x: hidden;
-        }
-        .glass { 
-            background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(20px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #ff9d00 0%, #ff4d00 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #ff8c00 0%, #ff4500 100%);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif; background: radial-gradient(circle at top right, #1e293b, #0f172a); color: #f1f5f9; margin: 0; overflow-x: hidden; }
+        .glass { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .gradient-text { background: linear-gradient(135deg, #ff9d00 0%, #ff4d00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-primary { background: linear-gradient(135deg, #ff8c00 0%, #ff4500 100%); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(255, 69, 0, 0.4); }
         [x-cloak] { display: none !important; }
         .card-enter { animation: slideIn 0.5s ease forwards; opacity: 0; }
         @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
@@ -40,8 +24,6 @@
     </style>
 </head>
 <body x-data="aiTitleApp()" x-init="init()" class="min-h-screen flex flex-col items-center py-8 px-4">
-    
-    <!-- Top Nav / Settings -->
     <nav class="w-full max-w-6xl flex justify-between items-center mb-8 px-4">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-lg shadow-orange-900/20">
@@ -49,19 +31,14 @@
             </div>
             <div>
                 <h1 class="text-xl font-black tracking-tight">TITLE MASTER <span class="text-orange-500 italic">PRO</span></h1>
-                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest leading-none">AI Production v3.0</p>
+                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest leading-none">AI Production v3.1</p>
             </div>
         </div>
-        
-        <div class="flex items-center gap-4">
-            <button @click="showHistory = !showHistory" class="glass px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 hover:bg-slate-800/50 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
-                历史记录
-            </button>
-        </div>
+        <button @click="showHistory = !showHistory" class="glass px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 hover:bg-slate-800/50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+            历史记录
+        </button>
     </nav>
-
-    <!-- History Panel (Drawer) -->
     <div x-show="showHistory" x-cloak class="fixed inset-0 z-50 flex justify-end">
         <div @click="showHistory = false" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
         <div class="relative w-full max-w-md bg-slate-900 h-full shadow-2xl p-6 overflow-y-auto border-l border-slate-800">
@@ -69,9 +46,7 @@
                 <h2 class="text-xl font-black">历史记录 <span class="text-xs text-slate-500 font-normal ml-2" x-text="history.length + ' / 50'"></span></h2>
                 <div class="flex gap-2">
                     <button @click="clearHistory()" class="text-[10px] font-bold text-red-400 hover:text-red-300">清空</button>
-                    <button @click="showHistory = false" class="text-slate-500 hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-                    </button>
+                    <button @click="showHistory = false" class="text-slate-500 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
                 </div>
             </div>
             <div class="space-y-4">
@@ -79,139 +54,61 @@
                     <div class="p-4 rounded-2xl bg-slate-800/50 border border-slate-700/50 hover:border-orange-500/30 transition-all group">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-[9px] font-black text-slate-500" x-text="formatTime(h.time)"></span>
-                            <div class="flex items-center gap-2">
-                                <div :class="getScoreColor(h.score)" class="w-1.5 h-1.5 rounded-full"></div>
-                                <span class="text-[10px] font-bold" x-text="h.score"></span>
-                            </div>
+                            <div class="flex items-center gap-2"><div :class="getScoreColor(h.score)" class="w-1.5 h-1.5 rounded-full"></div><span class="text-[10px] font-bold" x-text="h.score"></span></div>
                         </div>
                         <p class="text-xs text-slate-300 leading-relaxed mb-3 group-hover:text-white" x-text="h.title"></p>
-                        <button @click="copy(h.title)" class="text-[10px] font-bold text-orange-500 hover:text-orange-400 flex items-center gap-1">
-                            复制标题
-                        </button>
+                        <button @click="copy(h.title)" class="text-[10px] font-bold text-orange-500 hover:text-orange-400">复制标题</button>
                     </div>
                 </template>
-                <div x-show="history.length === 0" class="text-center py-20 text-slate-600">
-                    <p>暂无历史记录</p>
-                </div>
             </div>
         </div>
     </div>
-
-    <!-- Main Content -->
     <main class="w-full max-w-4xl space-y-8">
-        
-        <!-- Search Card -->
         <div class="glass p-4 rounded-[2.5rem] space-y-4">
-            <div class="flex flex-col md:flex-row gap-3">
-                <div class="flex-1 bg-slate-950/50 rounded-3xl border border-slate-800 focus-within:border-orange-500/50 transition-all flex items-center px-6 py-1">
-                    <input 
-                        type="text" 
-                        x-model="userInput" 
-                        @keyup.enter="generate()"
-                        placeholder="输入产品关键词 (如: 蓝牙耳机 / 瑜伽垫)" 
-                        class="w-full bg-transparent border-none py-4 text-lg font-bold outline-none placeholder:text-slate-700"
-                    >
-                </div>
-                <div class="w-full md:w-48 bg-slate-950/50 rounded-3xl border border-slate-800 flex items-center px-4">
-                    <select x-model="industry" class="w-full bg-transparent border-none py-4 text-sm font-bold outline-none text-slate-400">
-                        <option value="default">通用行业</option>
-                        <option value="electronics">消费电子</option>
-                        <option value="apparel">服装配饰</option>
-                        <option value="machinery">机械工业</option>
-                        <option value="home">家居家装</option>
-                    </select>
-                </div>
+            <div class="bg-slate-950/50 rounded-3xl border border-slate-800 focus-within:border-orange-500/50 transition-all flex items-center px-6 py-1">
+                <input type="text" x-model="userInput" @keyup.enter="generate()" placeholder="输入产品关键词 (如: 蓝牙耳机 / 瑜伽垫 / 智能手表)" class="w-full bg-transparent border-none py-4 text-xl font-bold outline-none placeholder:text-slate-700">
             </div>
-            
             <div class="flex flex-col md:flex-row justify-between items-center gap-4 px-2">
-                <div class="flex items-center gap-2">
-                    <input type="text" x-model="brand" placeholder="品牌词 (选填)" class="bg-slate-900/50 border border-slate-800 rounded-xl px-4 py-2 text-xs outline-none focus:border-orange-500 w-32">
-                    <span class="text-[10px] text-slate-600 font-bold">行业大脑已就绪</span>
-                </div>
-                <button 
-                    @click="generate()"
-                    :disabled="isGenerating"
-                    class="btn-primary w-full md:w-auto px-10 py-4 rounded-2xl font-black text-white flex items-center justify-center gap-3 disabled:opacity-50"
-                >
+                <input type="text" x-model="brand" placeholder="品牌词 (选填)" class="bg-slate-900/50 border border-slate-800 rounded-xl px-4 py-3 text-sm outline-none focus:border-orange-500 w-full md:w-48">
+                <button @click="generate()" :disabled="isGenerating" class="btn-primary w-full md:w-auto px-12 py-4 rounded-2xl font-black text-white flex items-center justify-center gap-3 disabled:opacity-50">
                     <span x-show="!isGenerating">AI 智能一键生成</span>
                     <svg x-show="isGenerating" class="animate-spin h-5 w-5" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                 </button>
             </div>
         </div>
-
-        <!-- AI Progress -->
         <div x-show="isGenerating" x-cloak class="flex flex-col items-center gap-4 py-10">
-            <div class="flex gap-1">
-                <template x-for="i in 3">
-                    <div class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-bounce" :style="'animation-delay: ' + (i * 100) + 'ms'"></div>
-                </template>
-            </div>
+            <div class="flex gap-1"><template x-for="i in 3"><div class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-bounce" :style="'animation-delay: ' + (i * 100) + 'ms'"></div></template></div>
             <p class="text-[10px] font-black uppercase tracking-[0.2em] text-orange-500" x-text="currentStep"></p>
         </div>
-
-        <!-- Results -->
         <div x-show="hasResults" x-cloak class="space-y-6 pb-20">
             <template x-for="(res, index) in results" :key="index">
                 <div class="glass p-6 md:p-8 rounded-[2.5rem] card-enter relative overflow-hidden" :style="'animation-delay: ' + (index * 150) + 'ms'">
-                    <!-- SEO Badge -->
                     <div class="absolute top-0 right-0 px-6 py-2 bg-slate-800/80 rounded-bl-3xl border-l border-b border-slate-700/50 flex items-center gap-3">
-                        <div class="flex flex-col items-end">
-                            <span class="text-[8px] font-black text-slate-500 uppercase tracking-widest">SEO Score</span>
-                            <span class="text-sm font-black tracking-tighter" :class="res.score >= 90 ? 'text-emerald-400' : 'text-orange-400'" x-text="res.score"></span>
-                        </div>
+                        <div class="flex flex-col items-end"><span class="text-[8px] font-black text-slate-500 uppercase tracking-widest">SEO Score</span><span class="text-sm font-black tracking-tighter" :class="res.score >= 90 ? 'text-emerald-400' : 'text-orange-400'" x-text="res.score"></span></div>
                         <div :class="getScoreColor(res.score)" class="w-2 h-2 rounded-full"></div>
                     </div>
-
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-500" x-text="res.strategy"></span>
-                        <div class="h-[1px] flex-1 bg-slate-800"></div>
-                        <div :class="res.title.length >= 100 && res.title.length <= 128 ? 'text-emerald-400' : 'text-red-400'" class="text-[10px] font-black px-2 py-0.5 rounded bg-slate-950 border border-slate-800">
-                            <span x-text="res.title.length"></span>/128
-                        </div>
-                    </div>
-
+                    <div class="flex items-center gap-3 mb-6"><span class="text-[10px] font-black uppercase tracking-widest text-slate-500" x-text="res.strategy"></span><div class="h-[1px] flex-1 bg-slate-800"></div><div :class="res.title.length >= 100 && res.title.length <= 128 ? 'text-emerald-400' : 'text-red-400'" class="text-[10px] font-black px-2 py-0.5 rounded bg-slate-950 border border-slate-800"><span x-text="res.title.length"></span>/128</div></div>
                     <p class="text-xl md:text-2xl font-bold leading-relaxed mb-8 hover:text-orange-400 transition-colors cursor-pointer" @click="copy(res.title)" x-text="res.title"></p>
-                    
-                    <div class="flex justify-between items-center">
-                        <div class="flex gap-2">
-                            <span class="text-[10px] px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-bold">高权重核心词</span>
-                            <span class="text-[10px] px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 font-bold">场景覆盖</span>
-                        </div>
-                        <button @click="copy(res.title)" class="btn-primary px-6 py-2 rounded-xl text-xs font-bold text-white">复制方案</button>
-                    </div>
+                    <div class="flex justify-between items-center"><div class="flex gap-2"><span class="text-[10px] px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-bold">高权重核心词</span><span class="text-[10px] px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 font-bold">场景覆盖</span></div><button @click="copy(res.title)" class="btn-primary px-6 py-2 rounded-xl text-xs font-bold text-white">复制方案</button></div>
                 </div>
             </template>
         </div>
     </main>
-
-    <!-- Toast -->
     <div x-show="showToast" x-cloak class="fixed bottom-10 left-1/2 -translate-x-1/2 glass px-8 py-4 rounded-3xl border border-orange-500/30 flex items-center gap-3 z-[100] animate-bounce">
-        <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <p class="font-bold text-sm">标题已复制到剪贴板，快去发布吧！</p>
+        <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p class="font-bold text-sm">标题已复制到剪贴板！</p>
     </div>
-
     <script>
         function aiTitleApp() {
             return {
-                userInput: '', brand: '', industry: 'default', isGenerating: false, hasResults: false, showHistory: false, showToast: false,
-                results: [], history: [], currentStep: '',
-                allSteps: ['正在模拟国际站 Top 50 调研...', '分析同行业爆款词频...', '计算核心词权重分布...', '扩展高转化规格属性...', '正在组装 v3.0 深度方案...'],
-                
+                userInput: '', brand: '', isGenerating: false, hasResults: false, showHistory: false, showToast: false, results: [], history: [], currentStep: '',
+                allSteps: ['正在模拟国际站 Top 50 调研...', '分析行业爆款词频...', '计算核心词权重分布...', '扩展高转化规格属性...', '正在组装智能方案...'],
                 knowledge: {
-                    default: { specs: ["High Performance", "Professional", "Durable", "Portable", "2024 New"], marketing: ["Factory Price", "Wholesale", "Customized"] },
-                    electronics: { specs: ["Fast Charging", "High Resolution", "Smart Chip", "Wireless 5.3", "Ultra Thin"], marketing: ["OEM Support", "Bulk Price", "Sample Available"] },
-                    apparel: { specs: ["Breathable Fabric", "Eco-friendly", "Soft Touch", "Fashion Design", "Various Sizes"], marketing: ["Direct Manufacturer", "Custom Logo", "Fast Shipping"] },
-                    machinery: { specs: ["Industrial Grade", "Easy Operation", "Energy Saving", "Long Life Span", "High Efficiency"], marketing: ["Global Warranty", "Engineer Support", "Customized Design"] },
-                    home: { specs: ["Home Decor", "Space Saving", "Modern Style", "Easy Installation", "Premium Material"], marketing: ["Stock Ready", "Wholesale Price", "Reliable Quality"] }
+                    default: { specs: ["High Performance", "Professional", "Durable", "Portable", "2024 New", "Smart", "Ultra-thin", "High-speed", "Adjustable"], marketing: ["Factory Price", "Wholesale", "Customized", "Premium Quality", "Direct Supply"] },
+                    "耳机": { specs: ["Bluetooth 5.3", "Noise Cancelling", "Hi-Fi Stereo", "Waterproof IPX7", "Long Battery Life"], marketing: ["OEM Support", "Sample Available"] },
+                    "手表": { specs: ["Health Monitor", "Amoled Screen", "Waterproof", "Sleep Tracker", "GPS Tracking"], marketing: ["Fast Delivery", "Gift Box"] }
                 },
-
-                init() {
-                    const saved = localStorage.getItem('title_history');
-                    if (saved) this.history = JSON.parse(saved);
-                },
-
+                init() { const saved = localStorage.getItem('title_history_v3'); if (saved) this.history = JSON.parse(saved); },
                 async translate(text) {
                     if (!text) return "";
                     if (/[\u4e00-\u9fa5]/.test(text)) {
@@ -223,33 +120,25 @@
                     }
                     return text;
                 },
-
                 async generate() {
                     if (!this.userInput) return;
-                    this.isGenerating = true;
-                    this.hasResults = false;
-                    
-                    for (let step of this.allSteps) {
-                        this.currentStep = step;
-                        await new Promise(r => setTimeout(r, 600));
-                    }
-
+                    this.isGenerating = true; this.hasResults = false;
+                    for (let step of this.allSteps) { this.currentStep = step; await new Promise(r => setTimeout(r, 600)); }
                     const enName = await this.translate(this.userInput);
-                    const b = this.brand.trim() || "Customized";
-                    const data = this.knowledge[this.industry] || this.knowledge.default;
-
+                    const b = this.brand.trim() || "OEM/Customized";
+                    let data = this.knowledge.default;
+                    for (let key in this.knowledge) { if (this.userInput.includes(key)) data = this.knowledge[key]; }
                     const variations = [
                         { strategy: "SEO DOMINANCE", pattern: [enName, data.specs[0], data.specs[1], data.marketing[0], "Product", b] },
                         { strategy: "CONVERSION HOOK", pattern: ["Wholesale", enName, data.specs[2], "Factory Price", b] },
-                        { strategy: "BUYER INTUITION", pattern: [data.specs[4], enName, "for Global Market", b] },
+                        { strategy: "BUYER INTUITION", pattern: [data.specs[4], enName, "Professional Manufacturer", b] },
                         { strategy: "TREND MASTER", pattern: ["2024 New Arrival", enName, data.specs[3], data.marketing[1] || "Best Selling", b] },
                         { strategy: "FEATURE FOCUS", pattern: [enName, data.specs.slice(0, 3).join(' '), "Direct Supply", b] }
                     ];
-
                     this.results = variations.map(v => {
                         let title = v.pattern.filter(p => p).join(' ').replace(/\s+/g, ' ').trim();
                         if (title.length < 100) {
-                            const fillers = ["for Global Market", "Professional Supplier", "High Quality Grade", "Reliable Performance"];
+                            const fillers = ["for Global Market", "Export Standard Quality", "High Performance Design", "Reliable Professional Supply"];
                             while (title.length < 105) title = fillers[Math.floor(Math.random() * fillers.length)] + " " + title;
                         }
                         title = title.substring(0, 128);
@@ -257,56 +146,31 @@
                         this.saveHistory(title, score);
                         return { title, score, strategy: v.strategy };
                     });
-
-                    this.isGenerating = false;
-                    this.hasResults = true;
+                    this.isGenerating = false; this.hasResults = true;
                 },
-
                 calculateSEO(title) {
                     let score = 70;
                     if (title.length >= 100 && title.length <= 128) score += 15;
                     if (title.toLowerCase().includes('wholesale') || title.toLowerCase().includes('factory')) score += 5;
-                    if (title.toLowerCase().includes('customized')) score += 5;
-                    const words = title.split(' ');
-                    const unique = new Set(words);
+                    const words = title.split(' '); const unique = new Set(words);
                     if (words.length - unique.size > 2) score -= 10;
                     return Math.min(100, score);
                 },
-
                 getScoreColor(score) {
                     if (score >= 90) return 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]';
                     if (score >= 80) return 'bg-blue-500';
                     return 'bg-orange-500';
                 },
-
                 saveHistory(title, score) {
-                    const item = { title, score, time: Date.now() };
-                    this.history.unshift(item);
+                    const item = { title, score, time: Date.now() }; this.history.unshift(item);
                     if (this.history.length > 50) this.history.pop();
-                    localStorage.setItem('title_history', JSON.stringify(this.history));
+                    localStorage.setItem('title_history_v3', JSON.stringify(this.history));
                 },
-
-                clearHistory() {
-                    if (confirm("确定要清空所有历史记录吗？")) {
-                        this.history = [];
-                        localStorage.removeItem('title_history');
-                    }
-                },
-
-                formatTime(ts) {
-                    const d = new Date(ts);
-                    return `${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${d.getMinutes().toString().padStart(2, '0')}`;
-                },
-
+                clearHistory() { if (confirm("确定要清空所有历史记录吗？")) { this.history = []; localStorage.removeItem('title_history_v3'); } },
+                formatTime(ts) { const d = new Date(ts); return `${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${d.getMinutes().toString().padStart(2, '0')}`; },
                 copy(text) {
-                    const el = document.createElement('textarea');
-                    el.value = text;
-                    document.body.appendChild(el);
-                    el.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(el);
-                    this.showToast = true;
-                    setTimeout(() => this.showToast = false, 2500);
+                    const el = document.createElement('textarea'); el.value = text; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
+                    this.showToast = true; setTimeout(() => this.showToast = false, 2500);
                 }
             }
         }
