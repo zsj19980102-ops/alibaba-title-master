@@ -3,106 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alibaba AI Title Master - 极速智能生成</title>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <title>国际站标题神器 AI 一键版 - 国内加速版</title>
+    <script src="https://cdn.staticfile.org/alpinejs/3.13.5/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link href="https://fonts.loli.net/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #ff6a00;
-            --secondary: #ee0979;
-        }
-        body { 
-            font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif; 
-            background: radial-gradient(circle at top right, #1e293b, #0f172a);
-            color: #f1f5f9; 
-            margin: 0;
-            overflow-x: hidden;
-        }
-        .glass { 
-            background: rgba(30, 41, 59, 0.4); 
-            backdrop-filter: blur(20px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #ff9d00 0%, #ff4d00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #ff8c00 0%, #ff4500 100%);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(255, 69, 0, 0.4);
-        }
-        .loading-bar {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-        }
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
+        :root { --primary: #ff6a00; --secondary: #ee0979; }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif; background: radial-gradient(circle at top right, #1e293b, #0f172a); color: #f1f5f9; margin: 0; overflow-x: hidden; }
+        .glass { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .gradient-text { background: linear-gradient(135deg, #ff9d00 0%, #ff4d00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-primary { background: linear-gradient(135deg, #ff8c00 0%, #ff4500 100%); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(255, 69, 0, 0.4); }
+        .loading-bar { height: 2px; background: linear-gradient(90deg, transparent, var(--primary), transparent); background-size: 200% 100%; animation: loading 1.5s infinite; }
+        @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
         [x-cloak] { display: none !important; }
         .card-enter { animation: slideIn 0.5s ease forwards; opacity: 0; }
-        @keyframes slideIn {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+        @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     </style>
 </head>
 <body x-data="aiTitleApp()" class="min-h-screen flex flex-col items-center py-12 px-4">
-    
-    <!-- Header -->
+    <div x-show="!online" x-cloak class="fixed top-4 bg-red-500/90 text-white px-6 py-2 rounded-full text-xs font-bold z-[100] shadow-xl flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        翻译功能需要 VPN 加速，当前环境可能受限
+    </div>
     <header class="text-center mb-12 space-y-4 max-w-2xl">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[10px] font-black uppercase tracking-widest mb-2">
             <span class="relative flex h-2 w-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
             </span>
-            AI Powered Engine v2.0
+            AI Powered Engine v2.0 (China Optimized)
         </div>
-        <h1 class="text-5xl font-extrabold tracking-tight">
-            国际站标题 <span class="gradient-text">一键生成器</span>
-        </h1>
+        <h1 class="text-5xl font-extrabold tracking-tight">国际站标题 <span class="gradient-text">一键生成器</span></h1>
         <p class="text-slate-400 font-medium">输入产品名，AI 自动调研并生成 5 组符合 128 字符规则的高转化标题</p>
     </header>
-
-    <!-- Main Input Section -->
     <main class="w-full max-w-4xl space-y-10">
-        
         <div class="glass p-2 rounded-3xl flex flex-col md:flex-row items-center gap-2 focus-within:ring-2 focus-within:ring-orange-500/50 transition-all shadow-2xl">
-            <input 
-                type="text" 
-                x-model="userInput" 
-                @keyup.enter="generate()"
-                placeholder="输入产品名称 (例如：智能手表 / Bluetooth Speaker)" 
-                class="flex-1 bg-transparent border-none px-6 py-4 text-xl font-bold outline-none placeholder:text-slate-600"
-            >
+            <input type="text" x-model="userInput" @keyup.enter="generate()" placeholder="输入产品名称 (例如：智能手表 / Bluetooth Speaker)" class="flex-1 bg-transparent border-none px-6 py-4 text-xl font-bold outline-none placeholder:text-slate-600">
             <div class="flex items-center gap-2 p-2 w-full md:w-auto">
-                <input 
-                    type="text" 
-                    x-model="brand" 
-                    placeholder="品牌词 (选填)" 
-                    class="bg-slate-900/50 border border-slate-700/50 rounded-2xl px-4 py-3 text-sm outline-none focus:border-orange-500 w-full md:w-32"
-                >
-                <button 
-                    @click="generate()"
-                    :disabled="isGenerating"
-                    class="btn-primary px-8 py-3 rounded-2xl font-bold text-white whitespace-nowrap disabled:opacity-50 flex items-center gap-2 min-w-[140px] justify-center"
-                >
+                <input type="text" x-model="brand" placeholder="品牌词 (选填)" class="bg-slate-900/50 border border-slate-700/50 rounded-2xl px-4 py-3 text-sm outline-none focus:border-orange-500 w-full md:w-32">
+                <button @click="generate()" :disabled="isGenerating" class="btn-primary px-8 py-3 rounded-2xl font-bold text-white whitespace-nowrap disabled:opacity-50 flex items-center gap-2 min-w-[140px] justify-center">
                     <span x-show="!isGenerating">智能一键生成</span>
                     <svg x-show="isGenerating" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                 </button>
             </div>
         </div>
-
-        <!-- AI Thinking State -->
         <div x-show="isGenerating" x-cloak class="space-y-4">
             <div class="loading-bar rounded-full overflow-hidden"></div>
             <div class="flex justify-center gap-6">
@@ -114,8 +59,6 @@
                 </template>
             </div>
         </div>
-
-        <!-- Results Section -->
         <div x-show="hasResults" x-cloak class="grid grid-cols-1 gap-6 pb-20">
             <template x-for="(res, index) in results" :key="index">
                 <div class="glass p-8 rounded-[2rem] card-enter hover:bg-slate-800/50 transition-all border-l-4 border-l-orange-500" :style="'animation-delay: ' + (index * 150) + 'ms'">
@@ -140,9 +83,7 @@
                             </button>
                         </div>
                     </div>
-                    
                     <p class="text-xl font-bold leading-relaxed text-slate-100 mb-6 cursor-pointer hover:text-orange-400 transition-colors" @click="copy(res.title)" x-text="res.title"></p>
-                    
                     <div class="flex justify-between items-center text-[10px] text-slate-500 font-bold uppercase border-t border-slate-800 pt-4">
                         <span x-text="res.desc"></span>
                         <span class="flex items-center gap-1 text-emerald-400">
@@ -154,136 +95,69 @@
             </template>
         </div>
     </main>
-
-    <!-- Floating Copy Toast -->
     <div x-show="showToast" x-cloak class="fixed bottom-10 left-1/2 -translate-x-1/2 glass px-6 py-3 rounded-full text-sm font-bold border border-orange-500/30 flex items-center gap-3 z-50">
         <svg class="text-orange-500" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         标题已复制到剪贴板
     </div>
-
     <script>
         function aiTitleApp() {
             return {
-                userInput: '',
-                brand: '',
-                isGenerating: false,
-                hasResults: false,
-                showToast: false,
-                results: [],
-                steps: [],
+                userInput: '', brand: '', isGenerating: false, hasResults: false, showToast: false, online: true, results: [], steps: [],
                 allSteps: ['正在识别产品类目...', '分析国际站 Top 50 流量密码...', '执行 SEO 词频模拟分析...', '扩展产品规格参数...', '匹配高转化营销词...', '正在组装最终方案...'],
-                
-                // Smart Knowledge Base (Simplified for Local Simulation)
                 knowledge: {
-                    default: {
-                        specs: ["High Speed", "Durable Material", "Waterproof", "Portable Design", "Professional Grade", "2024 New Model"],
-                        usps: ["Factory Direct Price", "Quick Delivery", "OEM/ODM Support", "Customized Logo", "Premium Quality Guarantee"],
-                        scenarios: ["for Outdoor", "for Home Use", "for Commercial Use", "Daily Life"]
-                    },
-                    "耳机": {
-                        en: "Wireless Bluetooth Headphones",
-                        specs: ["Bluetooth 5.3", "Noise Cancelling", "Long Battery Life", "Waterproof IPX7", "Hi-Fi Stereo Sound"],
-                        usps: ["Deep Bass", "Clear Mic", "Fast Pairing", "Comfortable Fit"],
-                        scenarios: ["for Gaming", "for Sports", "for Office"]
-                    },
-                    "手表": {
-                        en: "Smart Watch",
-                        specs: ["Health Monitor", "Sleep Tracker", "Waterproof", "AMOLED Screen", "GPS Tracking"],
-                        usps: ["Ultra Thin", "Sport Modes", "Blood Oxygen Sensor", "Custom Faces"],
-                        scenarios: ["for Men Women", "for Fitness", "Daily Use"]
-                    }
+                    default: { specs: ["High Speed", "Durable Material", "Waterproof", "Portable Design", "Professional Grade", "2024 New Model"], usps: ["Factory Direct Price", "Quick Delivery", "OEM/ODM Support", "Customized Logo", "Premium Quality Guarantee"], scenarios: ["for Outdoor", "for Home Use", "for Commercial Use", "Daily Life"] },
+                    "耳机": { en: "Wireless Bluetooth Headphones", specs: ["Bluetooth 5.3", "Noise Cancelling", "Long Battery Life", "Waterproof IPX7", "Hi-Fi Stereo Sound"], usps: ["Deep Bass", "Clear Mic", "Fast Pairing", "Comfortable Fit"], scenarios: ["for Gaming", "for Sports", "for Office"] },
+                    "手表": { en: "Smart Watch", specs: ["Health Monitor", "Sleep Tracker", "Waterproof", "AMOLED Screen", "GPS Tracking"], usps: ["Ultra Thin", "Sport Modes", "Blood Oxygen Sensor", "Custom Faces"], scenarios: ["for Men Women", "for Fitness", "Daily Use"] }
                 },
-
-                // Fast Translation Dictionary
-                dict: {
-                    "智能": "Smart", "无线": "Wireless", "蓝牙": "Bluetooth", "厂家": "Factory", "直销": "Direct",
-                    "批发": "Wholesale", "高清": "HD", "防水": "Waterproof", "定制": "Customized", "专业": "Professional",
-                    "高质量": "High Quality", "便携": "Portable", "新款": "New Arrival", "不锈钢": "Stainless Steel",
-                    "运动": "Sport", "户外": "Outdoor", "商务": "Business", "迷你": "Mini", "大容量": "Large Capacity"
-                },
-
+                dict: { "智能": "Smart", "无线": "Wireless", "蓝牙": "Bluetooth", "厂家": "Factory", "直销": "Direct", "批发": "Wholesale", "高清": "HD", "防水": "Waterproof", "定制": "Customized", "专业": "Professional", "高质量": "High Quality", "便携": "Portable", "新款": "New Arrival", "不锈钢": "Stainless Steel", "运动": "Sport", "户外": "Outdoor", "商务": "Business", "迷你": "Mini", "大容量": "Large Capacity" },
                 async translate(text) {
-                    for (let key in this.dict) {
-                        text = text.replace(new RegExp(key, 'g'), this.dict[key]);
-                    }
+                    for (let key in this.dict) { text = text.replace(new RegExp(key, 'g'), this.dict[key]); }
                     if (/[\u4e00-\u9fa5]/.test(text)) {
                         try {
-                            const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-CN&tl=en&dt=t&q=${encodeURIComponent(text)}`);
+                            const controller = new AbortController();
+                            const id = setTimeout(() => controller.abort(), 3000);
+                            const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-CN&tl=en&dt=t&q=${encodeURIComponent(text)}`, { signal: controller.signal });
+                            clearTimeout(id);
                             const data = await res.json();
+                            this.online = true;
                             return data[0].map(x => x[0]).join('');
-                        } catch (e) {
-                            return text;
-                        }
+                        } catch (e) { this.online = false; return text; }
                     }
                     return text;
                 },
-
                 async generate() {
                     if (!this.userInput) return;
-                    
-                    this.isGenerating = true;
-                    this.hasResults = false;
-                    this.results = [];
-                    this.steps = [];
-
+                    this.isGenerating = true; this.hasResults = false; this.results = []; this.steps = [];
                     for (let i = 0; i < this.allSteps.length; i++) {
                         this.steps.push(this.allSteps[i]);
                         await new Promise(r => setTimeout(r, 600 + Math.random() * 400));
                         if (this.steps.length > 2) this.steps.shift();
                     }
-
                     const enName = await this.translate(this.userInput);
                     const b = this.brand.trim() || "OEM/Customized";
-
                     let data = this.knowledge.default;
-                    for (let key in this.knowledge) {
-                        if (this.userInput.includes(key)) data = this.knowledge[key];
-                    }
-
+                    for (let key in this.knowledge) { if (this.userInput.includes(key)) data = this.knowledge[key]; }
                     this.results = [
-                        this.buildVariation("SEO 搜索霸权", ["Core First", "Long-tail"], "最符合搜索算法的排序，权重最高", 
-                            `${enName} ${data.specs[0]} ${data.specs[1]} ${data.usps[0]} ${data.scenarios[0]} ${b}`),
-                        
-                        this.buildVariation("高询盘转化钩子", ["Marketing", "USP"], "突出价格和定制优势，适合B端询盘", 
-                            `Wholesale ${enName} ${data.usps[0]} ${data.specs[2]} ${data.specs[3]} ${data.scenarios[1]} ${b}`),
-                        
-                        this.buildVariation("海外买家直觉", ["Scenario", "Feature"], "符合英语母语者阅读习惯，点击率高", 
-                            `${data.specs[4]} ${enName} ${data.scenarios[2]} ${data.specs[0]} ${data.usps[1]} ${b}`),
-                        
-                        this.buildVariation("2024 流行趋势", ["New Model", "Trend"], "利用‘新款’作为流量切入点", 
-                            `2024 New Arrival ${enName} ${data.specs[1]} ${data.specs[2]} ${data.usps[2]} ${b}`),
-                        
-                        this.buildVariation("全能覆盖词包", ["Max Info", "Keyword Pack"], "尽可能覆盖更多长尾搜索词", 
-                            `${enName} ${data.specs.join(' ')} ${b}`)
+                        this.buildVariation("SEO 搜索霸权", ["Core First", "Long-tail"], "最符合搜索算法的排序，权重最高", `${enName} ${data.specs[0]} ${data.specs[1]} ${data.usps[0]} ${data.scenarios[0]} ${b}`),
+                        this.buildVariation("高询盘转化钩子", ["Marketing", "USP"], "突出价格和定制优势，适合B端询盘", `Wholesale ${enName} ${data.usps[0]} ${data.specs[2]} ${data.specs[3]} ${data.scenarios[1]} ${b}`),
+                        this.buildVariation("海外买家直觉", ["Scenario", "Feature"], "符合英语母语者阅读习惯，点击率高", `${data.specs[4]} ${enName} ${data.scenarios[2]} ${data.specs[0]} ${data.usps[1]} ${b}`),
+                        this.buildVariation("2024 流行趋势", ["New Model", "Trend"], "利用‘新款’作为流量切入点", `2024 New Arrival ${enName} ${data.specs[1]} ${data.specs[2]} ${data.usps[2]} ${b}`),
+                        this.buildVariation("全能覆盖词包", ["Max Info", "Keyword Pack"], "尽可能覆盖更多长尾搜索词", `${enName} ${data.specs.join(' ')} ${b}`)
                     ];
-
-                    this.isGenerating = false;
-                    this.hasResults = true;
+                    this.isGenerating = false; this.hasResults = true;
                 },
-
                 buildVariation(strategy, tags, desc, rawTitle) {
                     let title = rawTitle.replace(/\s+/g, ' ').trim();
                     if (title.length < 100) {
                         const fillers = ["Professional Manufacturer Supply", "High Performance Product", "for Global Market", "Export Quality"];
-                        while (title.length < 100) {
-                            title = fillers[Math.floor(Math.random() * fillers.length)] + " " + title;
-                        }
+                        while (title.length < 100) { title = fillers[Math.floor(Math.random() * fillers.length)] + " " + title; }
                     }
-                    if (title.length > 128) {
-                        title = title.substring(0, 125) + "...";
-                    }
+                    if (title.length > 128) { title = title.substring(0, 125) + "..."; }
                     return { strategy, tags, desc, title };
                 },
-
                 copy(text) {
-                    const el = document.createElement('textarea');
-                    el.value = text;
-                    document.body.appendChild(el);
-                    el.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(el);
-                    this.showToast = true;
-                    setTimeout(() => this.showToast = false, 2000);
+                    const el = document.createElement('textarea'); el.value = text; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
+                    this.showToast = true; setTimeout(() => this.showToast = false, 2000);
                 }
             }
         }
